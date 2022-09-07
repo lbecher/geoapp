@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { NavigationContainer, useScrollToTop } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-export default function App() {
+import { ConnectionContextProvider } from './src/context/connectionContext'
+import { LayersContextProvider } from './src/context/layersContext'
+
+import SignIn from './src/screens/SignIn'
+import Home from './src/screens/Home'
+
+const Stack = createNativeStackNavigator()
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ConnectionContextProvider>
+      <LayersContextProvider>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }} >
+              <Stack.Screen name='Home' component={Home} />
+              <Stack.Screen name='SignIn' component={SignIn} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </LayersContextProvider>
+    </ConnectionContextProvider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
