@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View, Modal, Pressable } from 'react-native'
 import { Text } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-import { layersContext } from '../context/layersContext'
+import { layersContext } from '../contexts/LayersContext'
 
 const styles = StyleSheet.create({
   centeredView: {

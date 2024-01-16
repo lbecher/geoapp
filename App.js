@@ -1,16 +1,17 @@
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { NavigationContainer, useScrollToTop } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { ConnectionContextProvider } from './src/context/connectionContext'
-import { LayersContextProvider } from './src/context/layersContext'
+import { ConnectionContextProvider } from './src/contexts/ConnectionContext'
+import { LayersContextProvider } from './src/contexts/LayersContext'
 
-import SignIn from './src/screens/SignIn'
-import Home from './src/screens/Home'
+import Home from './src/Home'
+import SignIn from './src/SignIn'
 
 const Stack = createNativeStackNavigator()
 
-const App = () => {
+export default function App() {
   return (
     <ConnectionContextProvider>
       <LayersContextProvider>
@@ -21,10 +22,9 @@ const App = () => {
               <Stack.Screen name='SignIn' component={SignIn} />
             </Stack.Navigator>
           </NavigationContainer>
+          <StatusBar style="auto" />
         </SafeAreaProvider>
       </LayersContextProvider>
     </ConnectionContextProvider>
-  )
+  );
 }
-
-export default App

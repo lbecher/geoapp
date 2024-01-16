@@ -8,11 +8,11 @@ import * as Location from "expo-location"
 import * as Turf from '@turf/turf'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-import { connectionContext } from '../context/connectionContext'
-import { layersContext } from '../context/layersContext'
+import { connectionContext } from './contexts/ConnectionContext'
+import { layersContext } from './contexts/LayersContext'
 
-import LayersModal from '../components/LayersModal'
-import TablesModal from '../components/TablesModal'
+import LayersModal from './components/LayersModal'
+import TablesModal from './components/TablesModal'
 
 const Home = ({ navigation }) => {
   // contextos da aplicação

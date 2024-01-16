@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react'
 
-import { connectionContext } from './connectionContext'
+import { connectionContext } from './ConnectionContext'
 
 const layersContext = createContext({})
 

@@ -4,9 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { Button, Modal, Portal, Provider, Text, TextInput } from 'react-native-paper'
 
-import { connectionContext } from '../context/connectionContext'
+import { connectionContext } from './contexts/ConnectionContext'
 
-const SignIn = ({ navigation }) => {
+export default function SignIn({navigation}) {
   const { connection, setConnection } = useContext(connectionContext)
 
   const [showPassword, setShowPassword] = useState(true)
@@ -48,12 +48,12 @@ const SignIn = ({ navigation }) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            server: server,
-            database: database,
-            username: username,
-            password: password
-          })
+          server: server,
+          database: database,
+          username: username,
+          password: password
         })
+      })
       const json = await response.json()
       setSuccess(json.success)
     } catch (error) {
@@ -190,14 +190,12 @@ const SignIn = ({ navigation }) => {
               setLoading(true)
               getConnectionSuccess()
             }}
-          >
-            Acessar
-          </Button>
+          >Acessar</Button>
         </View>
       </ScrollView>
     </SafeAreaView>
     </Provider>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -227,5 +225,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   }
 })
-
-export default SignIn
